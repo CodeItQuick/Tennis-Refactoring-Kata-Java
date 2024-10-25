@@ -24,7 +24,7 @@ public class TennisGame1 implements TennisGame {
         }
 
         if (m_score1 >= 4 || m_score2 >= 4) {
-            return scoreForAdvantage(m_score1, m_score2);
+            return scoreForAdvantageOrWin(m_score1, m_score2);
         }
 
         return regularScore(m_score1, m_score2);
@@ -57,7 +57,7 @@ public class TennisGame1 implements TennisGame {
         return score;
     }
 
-    private static String scoreForAdvantage(int m_score1, int m_score2) {
+    private static String scoreForAdvantageOrWin(int m_score1, int m_score2) {
         String score;
         int minusResult = m_score1 - m_score2;
         if (minusResult == 1) score = "Advantage player1";
@@ -68,22 +68,11 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String scoreForTied() {
-        String score;
-        switch (m_score1) {
-            case 0:
-                score = "Love-All";
-                break;
-            case 1:
-                score = "Fifteen-All";
-                break;
-            case 2:
-                score = "Thirty-All";
-                break;
-            default:
-                score = "Deuce";
-                break;
-
-        }
-        return score;
+        return switch (m_score1) {
+            case 0 -> "Love-All";
+            case 1 -> "Fifteen-All";
+            case 2 -> "Thirty-All";
+            default -> "Deuce";
+        };
     }
 }
