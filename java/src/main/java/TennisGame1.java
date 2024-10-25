@@ -20,17 +20,17 @@ public class TennisGame1 implements TennisGame {
 
     public String getScore() {
         if (m_score1 == m_score2) {
-            return assignScore();
+            return scoreForTied();
         }
 
         if (m_score1 >= 4 || m_score2 >= 4) {
-            return assignPlayerAdvantage(m_score1, m_score2);
+            return scoreForAdvantage(m_score1, m_score2);
         }
 
-        return assignRegularScore(m_score1, m_score2);
+        return regularScore(m_score1, m_score2);
     }
 
-    private static String assignRegularScore(int m_score1, int m_score2) {
+    private static String regularScore(int m_score1, int m_score2) {
         String score = "";
         int tempScore;
         for (int i = 1; i < 3; i++) {
@@ -57,7 +57,7 @@ public class TennisGame1 implements TennisGame {
         return score;
     }
 
-    private static String assignPlayerAdvantage(int m_score1, int m_score2) {
+    private static String scoreForAdvantage(int m_score1, int m_score2) {
         String score;
         int minusResult = m_score1 - m_score2;
         if (minusResult == 1) score = "Advantage player1";
@@ -67,7 +67,7 @@ public class TennisGame1 implements TennisGame {
         return score;
     }
 
-    private String assignScore() {
+    private String scoreForTied() {
         String score;
         switch (m_score1) {
             case 0:
