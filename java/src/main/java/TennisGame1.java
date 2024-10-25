@@ -33,36 +33,29 @@ public class TennisGame1 implements TennisGame {
     private static String regularScore(int m_score1, int m_score2) {
         String score = "";
 
+        score = regularScore(m_score1, score);
+        score += "-";
+        score = regularScore(m_score2, score);
+        return score;
+    }
+
+    private static String regularScore(int m_score1, String score) {
+        String playerScore = "";
         switch (m_score1) {
             case 0:
-                score += "Love";
+                playerScore = "Love";
                 break;
             case 1:
-                score += "Fifteen";
+                playerScore = "Fifteen";
                 break;
             case 2:
-                score += "Thirty";
+                playerScore = "Thirty";
                 break;
             case 3:
-                score += "Forty";
+                playerScore = "Forty";
                 break;
         }
-        score += "-";
-        switch (m_score2) {
-            case 0:
-                score += "Love";
-                break;
-            case 1:
-                score += "Fifteen";
-                break;
-            case 2:
-                score += "Thirty";
-                break;
-            case 3:
-                score += "Forty";
-                break;
-        }
-        return score;
+        return score + playerScore;
     }
 
     private static String scoreForAdvantageOrWin(int m_score1, int m_score2) {
