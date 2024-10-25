@@ -12,7 +12,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName == "player1")
+        if (playerName == this.player1Name)
             m_score1 += 1;
         else
             m_score2 += 1;
@@ -32,10 +32,12 @@ public class TennisGame1 implements TennisGame {
 
     private static String regularScore(int m_score1, int m_score2) {
         String score = "";
-        int tempScore;
+        int tempScore = 0;
         for (int i = 1; i < 3; i++) {
-            if (i == 1) tempScore = m_score1;
-            else {
+            if (i == 1) {
+                tempScore = m_score1;
+            }
+            if (i == 2) {
                 score += "-";
                 tempScore = m_score2;
             }
