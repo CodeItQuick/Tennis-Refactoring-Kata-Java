@@ -40,21 +40,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     private static String regularScore(int m_score1, String score) {
-        String playerScore = "";
-        switch (m_score1) {
-            case 0:
-                playerScore = "Love";
-                break;
-            case 1:
-                playerScore = "Fifteen";
-                break;
-            case 2:
-                playerScore = "Thirty";
-                break;
-            case 3:
-                playerScore = "Forty";
-                break;
-        }
+        String playerScore = switch (m_score1) {
+            case 0 -> "Love";
+            case 1 -> "Fifteen";
+            case 2 -> "Thirty";
+            case 3 -> "Forty";
+            default -> "";
+        };
         return score + playerScore;
     }
 
